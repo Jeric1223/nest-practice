@@ -10,6 +10,9 @@ export class BaordStatusValidationPipe implements PipeTransform {
   }
 
   transform(value: any) {
+    if (value === undefined) {
+      return;
+    }
     value = value.toUpperCase();
 
     if (!this.isStatisValid(value)) {
