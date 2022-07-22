@@ -37,7 +37,7 @@ export class BoardsController {
   // }
   @Post()
   @UsePipes(ValidationPipe)
-  createBoard(@Body() createBoardDto: CreateBoardDto): Promise<Board> {
+  createBoard(@Body() createBoardDto: CreateBoardDto) {
     return this.boardsService.createBoard(createBoardDto);
   }
 

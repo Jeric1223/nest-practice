@@ -34,7 +34,7 @@ export class BoardsService {
   //   this.boards.push(board);
   //   return board;
   // }
-  async createBoard(createBoardDto: CreateBoardDto): Promise<Board> {
+  async createBoard(createBoardDto: CreateBoardDto) {
     const { title, description } = createBoardDto;
 
     const board = this.boardRepository.create({
@@ -44,7 +44,7 @@ export class BoardsService {
     });
 
     await this.boardRepository.save(board);
-    return board;
+    return { status: 201, message: 'success createBoard!' };
   }
 
   // getBoardById(id: string): Board {
