@@ -30,8 +30,8 @@ export class BoardsController {
   //   return this.boardsService.getAllBoards();
   // }
   @Get()
-  getAllBoard(): Promise<Board[]> {
-    return this.boardsService.getAllBoards();
+  getAllBoard(@Req() req): Promise<Board[]> {
+    return this.boardsService.getAllBoards(req.user);
   }
 
   // @Post()
@@ -61,8 +61,8 @@ export class BoardsController {
   //   return this.boardsService.deleteBoard(id);
   // }
   @Delete(':id')
-  deleteBoard(@Param('id', ParseIntPipe) id): Promise<void> {
-    return this.boardsService.deleteBoard(id);
+  deleteBoard(@Param('id', ParseIntPipe) id, @Req() req): Promise<void> {
+    return this.boardsService.deleteBoard(id, req.user);
   }
 
   // @Patch(':id/status')

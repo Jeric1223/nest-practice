@@ -16,8 +16,12 @@ export class BoardsService {
   // getAllBoards(): Board[] {
   //   return this.boards;
   // }
-  async getAllBoards(): Promise<Board[]> {
-    const board = await this.boardRepository.find();
+  async getAllBoards(user): Promise<Board[]> {
+    const board = await this.boardRepository.find({
+      where: {
+        user: user.id,
+      },
+    });
     return board;
   }
 
@@ -66,8 +70,8 @@ export class BoardsService {
   //   const found = this.getBoardById(id);
   //   this.boards = this.boards.filter((board) => board.id !== found.id);
   // }
-  async deleteBoard(id: number): Promise<void> {
-    const result = await this.boardRepository.delete(id); //바로 삭제 됨
+  async deleteBoard(id: number, user): Promise<void> {
+    const result = await this.boardRepository.delete({ id, user }); //바로 삭제 됨
     if (result.affected === 0) {
       throw new NotFoundException(`Cant find Board with id ${id}`);
     }
