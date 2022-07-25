@@ -7,6 +7,7 @@ import {
   ParseIntPipe,
   Patch,
   Post,
+  Req,
   UseGuards,
   UsePipes,
   ValidationPipe,
@@ -40,8 +41,9 @@ export class BoardsController {
   // }
   @Post()
   @UsePipes(ValidationPipe)
-  createBoard(@Body() createBoardDto: CreateBoardDto) {
-    return this.boardsService.createBoard(createBoardDto);
+  createBoard(@Body() createBoardDto: CreateBoardDto, @Req() req) {
+    console.log(req.user);
+    return this.boardsService.createBoard(createBoardDto, req.user);
   }
 
   // @Get(':id')

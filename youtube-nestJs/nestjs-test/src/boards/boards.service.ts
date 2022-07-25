@@ -32,13 +32,14 @@ export class BoardsService {
   //   this.boards.push(board);
   //   return board;
   // }
-  async createBoard(createBoardDto: CreateBoardDto) {
+  async createBoard(createBoardDto: CreateBoardDto, user) {
     const { title, description } = createBoardDto;
 
     const board = this.boardRepository.create({
       title,
       description,
       status: BoardStatus.PUBLIC,
+      user,
     });
 
     await this.boardRepository.save(board);
