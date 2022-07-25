@@ -27,7 +27,7 @@ export class AuthController {
   }
 
   @Post('/test')
-  @UseGuards(AuthGuard()) //@GetUser() user: User ( 커스텀 데코레이터)
+  @UseGuards(AuthGuard()) //@GetUser() user: User ( 커스텀 데코레이터 )
   test(@Req() req) {
     console.log('req', req.user);
   }
