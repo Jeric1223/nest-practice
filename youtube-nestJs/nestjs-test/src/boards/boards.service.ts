@@ -18,9 +18,7 @@ export class BoardsService {
   // }
   async getAllBoards(user): Promise<Board[]> {
     const board = await this.boardRepository.find({
-      where: {
-        user: user.id,
-      },
+      user,
     });
     return board;
   }
