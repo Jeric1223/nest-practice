@@ -4,8 +4,8 @@ import { AppModule } from './app.module';
 import * as config from 'config';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-
+  const app = await NestFactory.create(AppModule, { cors: true });
+  app.enableCors();
   const serverConfing = config.get('server');
 
   const port = serverConfing.port;

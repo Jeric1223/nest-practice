@@ -32,7 +32,7 @@ export class BoardsController {
   //   return this.boardsService.getAllBoards();
   // }
   @Get()
-  getAllBoard(@Req() req): Promise<Board[]> {
+  getAllBoard(@Req() req) /* : Promise<Board[]>  */ {
     this.logger.verbose(`User ${req.user.username} trying to get all boards`);
     return this.boardsService.getAllBoards(req.user);
   }

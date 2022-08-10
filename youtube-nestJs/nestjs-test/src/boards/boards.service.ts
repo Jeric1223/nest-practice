@@ -16,10 +16,11 @@ export class BoardsService {
   // getAllBoards(): Board[] {
   //   return this.boards;
   // }
-  async getAllBoards(user): Promise<Board[]> {
+  async getAllBoards(user) /* : Promise<Board[]> */ {
     const board = await this.boardRepository.find({
       user,
     });
+    console.log(board[0].title);
     return board;
   }
 
